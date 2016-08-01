@@ -158,7 +158,7 @@
   if (!(self = [super init]))
     return nil;
 
-  NSRect r = { 10, 10, 800, 150 };
+  NSRect r = { 10, 10, 900, 150 };
   _visualizerWindow = [[NSWindow alloc]
     initWithContentRect:r
     styleMask:NSBorderlessWindowMask
