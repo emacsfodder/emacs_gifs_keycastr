@@ -25,20 +25,40 @@
 //  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
-#import "KCUtility.h"
+#import <Cocoa/Cocoa.h>
+#import "KCVisualizer.h"
 
-void KCFailLoudly( int expr, NSString *message )
+@interface EmacsGifsVisualizerFactory : KCVisualizerFactory <KCVisualizerFactory>
 {
-  if (expr)
-  {
-    if (NSApp == nil)
-      NSApplicationLoad();
-    NSAlert *alert = [[[NSAlert alloc] init] autorelease];
-    [alert addButtonWithTitle:@"Close"];
-    [alert setMessageText:@"Security/Accessibility Error Encountered"];
-    [alert setInformativeText:[NSString stringWithFormat:@"%@\n\nKeyCastr will terminate.", message]];
-    [alert setAlertStyle:NSCriticalAlertStyle];
-    [alert runModal];
-    [NSApp terminate:nil];
-  }
 }
+
+-(NSString*) visualizerNibName;
+-(Class) visualizerClass;
+-(NSString*) visualizerName;
+
+@end
+
+@interface EmacsGifsVisualizerView : NSView
+{
+  uint32_t _flags;
+  NSString* _displayedString;
+}
+
+-(void) noteKeyEvent:(KCKeystroke*)keystroke;
+-(void) noteFlagsChanged:(uint32_t)flags;
+
+@end
+
+@interface EmacsGifsVisualizer : KCVisualizer <KCVisualizer>
+{
+  NSWindow* _visualizerWindow;
+  EmacsGifsVisualizerView* _visualizerView;
+}
+
+-(NSString*) visualizerName;
+-(void) deactivateVisualizer:(id)sender;
+
+-(void) noteKeyEvent:(KCKeystroke*)keystroke;
+-(void) noteFlagsChanged:(uint32_t)flags;
+
+@end
