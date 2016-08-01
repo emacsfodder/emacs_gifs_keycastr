@@ -1,20 +1,41 @@
-# Keycastr
+# Keycastr for EmacsGifs
 
-KeyCastr, an open-source keystroke visualizer.
+This is a fork of KeyCastr, an open-source keystroke visualizer.
 
-![preview](assets/preview.png)
+This version is specifically for recording of the GIF guides on
+Twitter [@emacs_gifs](https://twitter.com/emacs_gifs) general purpose
+OSX/macOS users will almost certainly prefer the original version!
 
-![display preferences](assets/preferences.png)
+### What Emacs specific stuff is going on?
 
-## Download
+I needed a visualizer which would be nicer (subjective), for recording
+GIFs on emacs_gifs.
 
- - [Download latest release](https://github.com/keycastr/keycastr/releases)
+I based this on the Svelte visualizer and had some time sucking
+problems just building as a new plugin, so I made this fork instead.
 
-### Installation via [homebrew](http://brew.sh/) [cask](https://github.com/caskroom/homebrew-cask)
+The Emacs specific stuff is simple changes to the display of
+keystrokes, instead of Mac specific glyphs, this visualizer displays
+Esc, Meta, Ctrl, Super.
 
-```console
-brew cask install keycastr
-```
+Tab and Space are also shown as simple text.
+
+## Building
+
+You need OSX to build and run, with XCode installed.
+
+    git clone https://github.com/emacsfodder/keycastr
+    cd keycastr/keycastr
+    xcodebuild -alltargets
+    mv build/Release/KeyCastr.app /Applications/
+    open -a KeyCastr
+
+You'll need to open Preferences > Security > Privacy and add/allow
+KeyCastr to the list of applications, as you see here.
+
+![](keycastr-security.png)
+
+For more info see the main [keycastr](https://github.com/keycastr/keycastr) repo.
 
 ## History
 
@@ -22,7 +43,6 @@ brew cask install keycastr
  - [akitchen](https://github.com/akitchen/keycastr) fixes for more recent OS X releases and other maintenance.
  - [elia](https://github.com/elia/keycastr) created `keycastr` organization and forked into it.
  - [lqez](https://github.com/lqez/keycastr) added a new menu bar icon.
-
 
 ## License
 
