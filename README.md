@@ -24,8 +24,8 @@ Tab and Space are also shown as simple text.
 
 You need OSX to build and run, with XCode installed.
 
-    git clone https://github.com/emacsfodder/keycastr
-    cd keycastr/keycastr
+    git clone https://github.com/emacsfodder/emacs_gifs_keycastr
+    cd emacs_gifs_keycastr/keycastr
     xcodebuild -alltargets
     mv build/Release/KeyCastr.app /Applications/
     open -a KeyCastr
